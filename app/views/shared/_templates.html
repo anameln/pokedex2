@@ -1,4 +1,9 @@
 <script type="text/template" id="pokemon-list-item-template">
+  <li class="poke-list-item" data-id="<%%= pokemon.id %>">
+    name: <%%= pokemon.get("name") %>
+    <br>
+    poke_type: <%%= pokemon.get("poke_type") %>
+  </li>
 </script>
 
 <script type="text/template" id="pokemon-detail-template">
