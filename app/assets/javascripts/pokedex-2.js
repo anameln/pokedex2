@@ -27,21 +27,22 @@ Pokedex.RootView.prototype.renderToyDetail = function (toy) { // III
   this.$toyDetail.html(content);
 
   // Phase III
-  var $pokemonSelect = $('<select>');
-  $pokemonSelect.data("pokemon-id", toy.get("pokemon_id"));
-  $pokemonSelect.data("toy-id", toy.id);
-  this.pokes.each(function (pokemon) {
-    var $pokemonOption = $('<option>');
-    $pokemonOption.attr("value", pokemon.id);
-    $pokemonOption.text(pokemon.get("name"));
-    if (pokemon.id == toy.get("pokemon_id")) {
-      $pokemonOption.prop("selected", true);
-    }
-    $pokemonSelect.append($pokemonOption);
-  });
-  $detail.append($pokemonSelect);
+  // var $pokemonSelect = $('<select>');
+  // $pokemonSelect.data("pokemon-id", toy.get("pokemon_id"));
+  // $pokemonSelect.data("toy-id", toy.id);
+  // this.pokes.each(function (pokemon) {
+  //   var $pokemonOption = $('<option>');
+  //   $pokemonOption.attr("value", pokemon.id);
+  //   $pokemonOption.text(pokemon.get("name"));
+  //   if (pokemon.id == toy.get("pokemon_id")) {
+  //     $pokemonOption.prop("selected", true);
+  //   }
+  //   $pokemonSelect.append($pokemonOption);
+  // });
+  // $detail.append($pokemonSelect);
 
-  this.$toyDetail.append($detail);
+  var form = JST["pokemonForm"]({ toy: toy, pokes: this.pokes })
+  this.$toyDetail.append(form);
 };
 
 Pokedex.RootView.prototype.selectToyFromList = function (event) {

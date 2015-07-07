@@ -47,4 +47,16 @@
 </script>
 
 <script type="text/template" id="pokemon-form-template">
+  <select data-pokemon-id="<%%= toy.get('pokemon_id') %>"
+    data-toy-id="<%%= toy.id %>">
+    <%% pokes.forEach(function(poke) { %>
+      <%% if (toy.get("pokemon_id") === poke.id) { %>
+        <option selected>
+      <%% } else { %>
+        <option>
+      <%% } %>
+        <%%= poke.get("name") %>
+      </option>
+    <%% }); %>
+  </select>
 </script>
