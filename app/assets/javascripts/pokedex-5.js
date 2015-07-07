@@ -2,6 +2,7 @@ Pokedex.Views = {}
 
 Pokedex.Views.PokemonIndex = Backbone.View.extend({
   events: {
+    "click li.poke-list-item": "selectPokemonFromList"
   },
 
   initialize: function () {
@@ -29,6 +30,9 @@ Pokedex.Views.PokemonIndex = Backbone.View.extend({
   },
 
   selectPokemonFromList: function (event) {
+    var pokemonId = $(event.currentTarget).data("id");
+    var pokemon = this.pokes.get(pokemonId);
+    console.log(pokemon.get("name"));
   }
 });
 
