@@ -26,8 +26,8 @@ Pokedex.Views.PokemonIndex = Backbone.View.extend({
   },
 
   selectPokemonFromList: function (event) {
-
-    Backbone.history.navigate("#/pokemon/" + pokemonId, { trigger: true });
+    var pokemonId = $(event.currentTarget).data("id");
+    Backbone.history.navigate("/pokemon/" + pokemonId, { trigger: true });
     // var pokemonDetail =
     //   new Pokedex.Views.PokemonDetail( {model: pokemon} )
 
@@ -43,8 +43,8 @@ Pokedex.Views.PokemonDetail = Backbone.View.extend({
     this.listenTo(this.model, "sync add", this.render);
   },
 
-  refreshPokemon: function () {
-    this.model.fetch();
+  refreshPokemon: function (options) {
+    this.model.fetch(options);
   },
 
   render: function () {
@@ -58,8 +58,9 @@ Pokedex.Views.PokemonDetail = Backbone.View.extend({
   selectToyFromList: function (event) {
     var toyId = $(event.currentTarget).data("id");
     var toy = this.model.toys().get(toyId);
-    var toyDetail = new Pokedex.Views.ToyDetail({ model: toy });
-    toyDetail.render([]);
+    Backbone.history.navigate("/pokemon/" + toy.get("pokemon_id") + "/toys/" + toyId, { trigger: true })
+    // var toyDetail = new Pokedex.Views.ToyDetail({ model: toy });
+    // toyDetail.render([]);
   }
 });
 
