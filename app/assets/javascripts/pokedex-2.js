@@ -15,16 +15,16 @@ Pokedex.RootView.prototype.renderToyDetail = function (toy) { // III
   this.$toyDetail.empty();
 
   var $detail = $('<div class="detail">');
-  $detail.append('<img src="' + toy.escape('image_url') + '"><br>');
-  for (var attr in toy.attributes) {
-    if(attr !== 'pokemon_id' && attr !== 'image_url') {
-      var $span = $('<span style="font-weight:bold;">');
-      $span.html(attr + ': ');
-      $detail.append($span);
-      $detail.append(toy.get(attr));
-      $detail.append('<br>');
-    }
-  }
+  // $detail.append('<img src="' + toy.escape('image_url') + '"><br>');
+  // for (var attr in toy.attributes) {
+  //   if(attr !== 'pokemon_id' && attr !== 'image_url') {
+  //     var $span = $('<span style="font-weight:bold;">');
+  //     $span.html(attr + ': ');
+  //     $detail.append($span);
+  //     $detail.append(toy.get(attr));
+  //     $detail.append('<br>');
+  var content = JST["toyDetail"]({ toy: toy });
+  this.$toyDetail.html(content);
 
   // Phase III
   var $pokemonSelect = $('<select>');
@@ -41,7 +41,7 @@ Pokedex.RootView.prototype.renderToyDetail = function (toy) { // III
   });
   $detail.append($pokemonSelect);
 
-  this.$toyDetail.html($detail);
+  this.$toyDetail.append($detail);
 };
 
 Pokedex.RootView.prototype.selectToyFromList = function (event) {

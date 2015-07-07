@@ -34,6 +34,16 @@
 </script>
 
 <script type="text/template" id="toy-detail-template">
+  <img src="<%%= toy.get('image_url')%>">
+  <ul>
+    <%% toy.pairs().forEach(function(pair) { %>
+      <%% if ((pair[0] !== "image_url") && (pair[0] !== "pokemon_id")) { %>
+        <li>
+          <%%= pair[0] + ': ' + pair[1] %>
+        </li>
+      <%% } %>
+    <%% }); %>
+  </ul>
 </script>
 
 <script type="text/template" id="pokemon-form-template">

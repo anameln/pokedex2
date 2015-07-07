@@ -1,4 +1,5 @@
 Pokedex.RootView.prototype.renderPokemonDetail = function (pokemon) {
+
   var content = JST["pokemonDetail"]({ pokemon: pokemon})
   // var $detail = $('<div class="detail">');
   // // Show the image
