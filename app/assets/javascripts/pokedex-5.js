@@ -13,11 +13,10 @@ Pokedex.Views.PokemonIndex = Backbone.View.extend({
   addPokemonToList: function (pokemon) {
     var content = JST["pokemonListItem"]({pokemon: pokemon});
     this.$el.append(content);
-    console.log("added")
   },
 
   refreshPokemon: function (options) {
-    this.pokes.fetch();
+    this.pokes.fetch(options);
   },
 
   render: function () {
@@ -27,12 +26,11 @@ Pokedex.Views.PokemonIndex = Backbone.View.extend({
   },
 
   selectPokemonFromList: function (event) {
-    var pokemonId = $(event.currentTarget).data("id");
-    var pokemon = this.pokes.get(pokemonId);
-    var pokemonDetail =
-      new Pokedex.Views.PokemonDetail( {model: pokemon} )
-    $("#pokedex .pokemon-detail").html(pokemonDetail.$el);
-    pokemonDetail.refreshPokemon();
+
+    Backbone.history.navigate("#/pokemon/" + pokemonId, { trigger: true });
+    // var pokemonDetail =
+    //   new Pokedex.Views.PokemonDetail( {model: pokemon} )
+
   }
 });
 
