@@ -2,6 +2,13 @@
 </script>
 
 <script type="text/template" id="pokemon-detail-template">
+  <ul>
+    <%% pokemon.pairs().forEach(function(pair) { %>
+      <li>
+        <%%= pair[0] + ': ' + pair[1] %>
+      </li>
+    <%% }); %>
+  </ul>
 </script>
 
 <script type="text/template" id="toy-list-item-template">
